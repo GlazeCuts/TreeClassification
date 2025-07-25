@@ -1,73 +1,108 @@
-# TreeClassification
-This project implements a deep learning model to classify images of 30+ tree and plant species using Convolutional Neural Networks (CNN) and EfficientNetB0 with TensorFlow/Keras. The dataset contains real-world images and includes significant class imbalance, which is handled using data augmentation and class weighting.
+This project focuses on classifying 30 different plant and tree species from images using deep learning. Leveraging EfficientNetB0 through transfer learning on top of a well-preprocessed dataset, the model aims to learn and distinguish between fine-grained categories of flora with high accuracy.
 
-1. Dataset Preparation
-Images were collected and structured in directories by class.
+ Dataset Overview
+Contains 30 tree/plant species, including neem, mango, bamboo, pipal, sugarcane, etc.
 
-.git and unrelated folders were removed from dataset directory.
+Folder structure follows:
 
-Duplicate images were filtered out.
+dataset/
+  ├── mango/
+  ├── neem/
+  ├── sugarcane/
+  └── ...
+Dataset contains class imbalance (e.g., other has more samples), which is tackled in the training process.
 
-Outliers were removed based on image dimension anomalies (too small or too large).
+ Preprocessing Pipeline
+1. Image Cleaning
+Removed broken/corrupted images.
 
-2. Data Preprocessing
-Normalization: Pixel values were scaled to [0, 1] using:
-
-rescale=1./255
-Image Resizing: All images resized to 224x224 to match EfficientNetB0's input shape.
+Ensured all images are of proper size and RGB format.
+ 2. Normalization
+Images were normalized by rescaling pixels from [0, 255] to [0, 1].
 
 3. Data Augmentation
-Implemented with ImageDataGenerator to improve model generalization:
+Implemented using ImageDataGenerator:
+
+Random rotation
+
+Horizontal flipping
+
+Zoom transformations
 
 ImageDataGenerator(
     rescale=1./255,
-    validation_split=0.2,
     rotation_range=20,
     zoom_range=0.2,
-    horizontal_flip=True
+    horizontal_flip=True,
+    validation_split=0.2
 )
-4. Class Imbalance Handling
-Used collections.Counter to get per-class image count.
+Handling Class Imbalance
+Used collections.Counter to analyze class distribution.
 
-Applied class weights during training via:
+Applied class_weight in model training to penalize dominant classes like 'other' and uplift underrepresented ones.
+ Model Architecture
+Final Model: Transfer Learning with EfficientNetB0
 
-model.fit(..., class_weight=class_weight_dict)
-This prevents the model from overfitting to more common classes (e.g., "other") and improves minority class performance.
+EfficientNetB0 (imagenet weights, unfrozen)
+→ GlobalAveragePooling2D
+→ Dropout(0.3)
+→ Dense(128, activation='relu')
+→ Dropout(0.3)
+→ Dense(30, activation='softmax')
+Used Adam optimizer with learning_rate = 0.0001
 
-5. CNN Architecture
-Two models were tested:
+Loss function: categorical_crossentropy
 
-🔹 A Basic CNN:
+⚙Training Setup
+Framework: TensorFlow 2 / Keras
 
-Conv2D → MaxPooling → Conv2D → MaxPooling → Flatten → Dense(256) → Dropout → Output
-🔹 Transfer Learning with EfficientNetB0:
+Platform: Google Colab
 
-EfficientNetB0 (pretrained, unfrozen) →
-GlobalAveragePooling →
-Dense(128, relu) →
-Dropout(0.3) →
-Dense(num_classes, softmax)
-Fine-tuning was enabled by setting base_model.trainable = True
+Accelerator: TPU / GPU
 
-Lower learning rate (0.0001) used to prevent catastrophic forgetting.
+Epochs: 10 (can be scaled)
 
-6. Model Training
-Training done on Google Colab with GPU or TPU support.
+Batch Size: 32
 
-Epochs: 10 (can be increased based on performance)
+Training/Validation split: 80/20
 
-Monitored accuracy and loss on both training and validation sets.
+Results
+Significant improvement in minority class prediction after applying class_weight.
 
-7. 💾 Model Saving
-Final model saved in HDF5 format:
-model.save('tree_species_classifier.h5')
-✅ Summary
-The final pipeline effectively:
+The model generalizes well on validation set despite original class imbalance.
 
-Handles image normalization
+Training loss steadily decreases and validation accuracy stabilizes (see notebook plots).
 
-Balances class distribution using class_weight
+Model Export
+Final model saved as:
 
-Uses transfer learning for strong feature extraction
+tree_species_classifier.h5
+Can be reloaded using:
 
-Achieves much better accuracy than a base CNN on a diverse 30-class dataset
+tf.keras.models.load_model('tree_species_classifier.h5')
+Future Improvements
+Use F1-score and per-class metrics for better performance diagnostics.
+
+Visualize Grad-CAM heatmaps to understand CNN attention.
+
+Apply stratified sampling or SMOTE for synthetic minority image generation.
+Dependencies
+bash
+Copy
+Edit
+tensorflow
+tensorflow-addons
+numpy
+matplotlib
+sklearn
+
+How to Run
+
+!pip install -U tensorflow
+# Load and preprocess images
+# Train model
+# Save or evaluate model
+🔗 Project Author
+GitHub: Rhivu
+Notebook: TreesClassification.ipynb
+Model file: tree_species_classifier.h5
