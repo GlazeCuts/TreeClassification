@@ -53,7 +53,7 @@ Used Adam optimizer with learning_rate = 0.0001
 
 Loss function: categorical_crossentropy
 
-⚙Training Setup
+Training Setup
 Framework: TensorFlow 2 / Keras
 
 Platform: Google Colab
@@ -95,7 +95,7 @@ tensorflow-addons
 numpy
 matplotlib
 sklearn
-
+version: 1.0
 How to Run
 
 !pip install -U tensorflow
