@@ -17,7 +17,7 @@ Dataset contains class imbalance (e.g., other has more samples), which is tackle
 Removed broken/corrupted images.
 
 Ensured all images are of proper size and RGB format.
- 2. Normalization
+2. Normalization
 Images were normalized by rescaling pixels from [0, 255] to [0, 1].
 
 3. Data Augmentation
