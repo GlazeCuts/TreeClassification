@@ -88,16 +88,26 @@ Use F1-score and per-class metrics for better performance diagnostics.
 Visualize Grad-CAM heatmaps to understand CNN attention.
 
 Apply stratified sampling or SMOTE for synthetic minority image generation.
+
 Dependencies
+
 bash
+
 Copy
+
 Edit
 tensorflow
+
 tensorflow-addons
+
 numpy
+
 matplotlib
+
 sklearn
+
 version: 1.0
+
 How to Run
 
 !pip install -U tensorflow
@@ -109,6 +119,9 @@ How to Run
 3.Save or evaluate model
 
 Project Author
+
 GitHub: Rhivu
+
 Notebook: TreesClassification.ipynb
-Model file: tree_species_classifier.h5
+
+Model file: TreeClassification.h5
