@@ -106,8 +106,9 @@ matplotlib
 
 sklearn
 
-version: 1.1
-- Added Personal Image Testing
+version: 1.2
+- Added Personal Image Testing.
+- Fixed Bugs.
 
 How to Run
 
