@@ -1,3 +1,5 @@
+Note: This project was done on Google Colab.
+
 This project focuses on classifying 30 different plant and tree species from images using deep learning. Leveraging EfficientNetB0 through transfer learning on top of a well-preprocessed dataset, the model aims to learn and distinguish between fine-grained categories of flora with high accuracy.
 
  Dataset Overview
@@ -15,9 +17,9 @@ Dataset contains class imbalance (e.g., other has more samples), which is tackle
  Preprocessing Pipeline
 1. Image Cleaning
 Removed broken/corrupted images.
-
 Ensured all images are of proper size and RGB format.
- 2. Normalization
+
+2. Normalization
 Images were normalized by rescaling pixels from [0, 255] to [0, 1].
 
 3. Data Augmentation
@@ -53,7 +55,7 @@ Used Adam optimizer with learning_rate = 0.0001
 
 Loss function: categorical_crossentropy
 
-⚙Training Setup
+Training Setup
 Framework: TensorFlow 2 / Keras
 
 Platform: Google Colab
@@ -86,23 +88,40 @@ Use F1-score and per-class metrics for better performance diagnostics.
 Visualize Grad-CAM heatmaps to understand CNN attention.
 
 Apply stratified sampling or SMOTE for synthetic minority image generation.
+
 Dependencies
+
 bash
+
 Copy
+
 Edit
 tensorflow
+
 tensorflow-addons
+
 numpy
+
 matplotlib
+
 sklearn
+
+version: 1.0
 
 How to Run
 
 !pip install -U tensorflow
-# Load and preprocess images
-# Train model
-# Save or evaluate model
-🔗 Project Author
+
+1.Load and preprocess images
+
+2.Train model
+
+3.Save or evaluate model
+
+Project Author
+
 GitHub: Rhivu
+
 Notebook: TreesClassification.ipynb
-Model file: tree_species_classifier.h5
+
+Model file: TreesClassification.h5
