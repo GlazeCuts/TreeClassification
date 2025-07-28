@@ -1,4 +1,5 @@
 Note: This project was done on Google Colab.
+
 This project focuses on classifying 30 different plant and tree species from images using deep learning. Leveraging EfficientNetB0 through transfer learning on top of a well-preprocessed dataset, the model aims to learn and distinguish between fine-grained categories of flora with high accuracy.
 
  Dataset Overview
