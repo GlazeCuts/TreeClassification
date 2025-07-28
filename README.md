@@ -124,4 +124,4 @@ GitHub: Rhivu
 
 Notebook: TreesClassification.ipynb
 
-Model file: TreeClassification.h5
+Model file: TreesClassification.h5
