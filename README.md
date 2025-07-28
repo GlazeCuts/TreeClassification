@@ -1,3 +1,4 @@
+Note: This project was done on Google Colab.
 This project focuses on classifying 30 different plant and tree species from images using deep learning. Leveraging EfficientNetB0 through transfer learning on top of a well-preprocessed dataset, the model aims to learn and distinguish between fine-grained categories of flora with high accuracy.
 
  Dataset Overview
@@ -99,10 +100,14 @@ version: 1.0
 How to Run
 
 !pip install -U tensorflow
-# Load and preprocess images
-# Train model
-# Save or evaluate model
-🔗 Project Author
+
+1.Load and preprocess images
+
+2.Train model
+
+3.Save or evaluate model
+
+Project Author
 GitHub: Rhivu
 Notebook: TreesClassification.ipynb
 Model file: tree_species_classifier.h5
