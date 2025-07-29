@@ -63,9 +63,9 @@ Framework: TensorFlow 2 / Keras
 
 Platform: Google Colab
 
-Accelerator: TPU / GPU
+Accelerator:  GPU
 
-Epochs: 10 (can be scaled)
+Epochs: 50 (can be scaled)
 
 Batch Size: 32
 
