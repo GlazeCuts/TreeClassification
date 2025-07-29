@@ -1,4 +1,7 @@
-Note: This project was done on Google Colab.
+Note: 
+- This project was done on Google Colab.
+- .h5 file format is considered legacy. We recommend using instead the native Keras format i.e. best_tree_species_model.keras.
+
 
 This project focuses on classifying 30 different plant and tree species from images using deep learning. Leveraging EfficientNetB0 through transfer learning on top of a well-preprocessed dataset, the model aims to learn and distinguish between fine-grained categories of flora with high accuracy.
 
@@ -106,10 +109,11 @@ matplotlib
 
 sklearn
 
-version: 1.2
+version: 1.3
 - Added Personal Image Testing.
 - Fixed Bugs.
-
+- Added Keras formatted model.
+  
 How to Run
 
 !pip install -U tensorflow
